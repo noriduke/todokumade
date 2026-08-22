@@ -176,7 +176,9 @@ a { color: var(--lamp); text-decoration: none; }
   font-size: clamp(30px, 7vw, 42px); letter-spacing: 0.2em; color: var(--ink);
 }
 .chara-text h3 small { font-size: 0.45em; letter-spacing: 0.24em; margin-left: 0.8em; }
-.chara-text .lead { margin: 0 0 24px; font-size: 14.5px; line-height: 1.9; letter-spacing: 0.04em; text-wrap: pretty; }
+/* 左揃えの本文に text-wrap: pretty は使わない。
+   Safari は行を揃えようとして全行を早めに折り返し、右側に空白の帯ができる（iOSで確認） */
+.chara-text .lead { margin: 0 0 24px; font-size: 14.5px; line-height: 1.9; letter-spacing: 0.04em; }
 .chara-text dl { margin: 0; font-size: 13.5px; line-height: 1.9; letter-spacing: 0.04em; }
 .chara-text dl > div { display: flex; gap: 14px; padding: 10px 0; border-top: 1px solid rgba(30,42,94,0.25); }
 .chara-text dl > div:last-child { border-bottom: 1px solid rgba(30,42,94,0.25); }
@@ -193,7 +195,7 @@ a { color: var(--lamp); text-decoration: none; }
   font-size: clamp(22px, 5vw, 26px); letter-spacing: 0.2em; color: var(--ink);
 }
 .chara-card h4 small { font-size: 0.55em; letter-spacing: 0.24em; margin-left: 0.8em; }
-.chara-card p { margin: 0; font-size: 13.5px; line-height: 1.9; letter-spacing: 0.04em; text-wrap: pretty; }
+.chara-card p { margin: 0; font-size: 13.5px; line-height: 1.9; letter-spacing: 0.04em; }
 .chara-card .voice { margin-top: 16px; font-family: var(--serif); font-size: 13px; letter-spacing: 0.08em; color: var(--navy); }
 
 /* ---------- STORY (scrollytelling) ---------- */
