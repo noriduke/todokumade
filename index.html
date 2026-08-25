@@ -97,7 +97,8 @@ a { color: var(--lamp); text-decoration: none; }
 
 /* ---------- MUSIC VIDEO ---------- */
 .mv { position: relative; padding: 110px 24px 130px; background: linear-gradient(180deg, #faf6f0 0%, #f5e8d8 100%); }
-.mv-inner { max-width: 760px; margin: 0 auto; }
+/* 動画3本が横一列に収まる幅（250px×3＋gap56×2＝862px）。足りない画面では flex-wrap が 2+1 に折る */
+.mv-inner { max-width: 880px; margin: 0 auto; }
 .mv-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 48px 56px; }
 .mv-cards figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 18px; }
 .phone {
@@ -329,6 +330,18 @@ footer .credit { margin-bottom: 8px; letter-spacing: 0.08em; opacity: 0.38; }
           <figcaption>歌唱ver.
             <button class="share-btn" type="button" aria-label="歌唱ver. をシェア"
               data-share-url="https://www.youtube.com/shorts/5hWabU8HLH0" data-share-text="「わたしに届くまで / 亜咲海」MV・歌唱バージョン">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M8 6.5 12 3l4 3.5"/><path d="M7 10H5v10h14V10h-2"/></svg>
+            </button>
+          </figcaption>
+        </figure>
+        <figure class="reveal">
+          <div class="phone" data-yt="N9S9QR0hYQA" data-yt-title="Bitter-Sweet">
+            <img class="yt-poster" src="assets/bitter-poster.webp" alt="Bitter-Sweet">
+            <button class="play-btn" type="button" aria-label="Bitter-Sweet を再生"></button>
+          </div>
+          <figcaption>Bitter-Sweet
+            <button class="share-btn" type="button" aria-label="Bitter-Sweet をシェア"
+              data-share-url="https://www.youtube.com/shorts/N9S9QR0hYQA" data-share-text="「Bitter-Sweet / 亜咲海」MV">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M8 6.5 12 3l4 3.5"/><path d="M7 10H5v10h14V10h-2"/></svg>
             </button>
           </figcaption>
