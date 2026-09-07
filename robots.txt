@@ -1,0 +1,25 @@
+# わたしに届くまで 公式サイト
+User-agent: *
+Allow: /
+
+# 生成AI・回答エンジンのクローラーにも明示的に許可（LLMO）
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://noriduke.github.io/todokumade/sitemap.xml
