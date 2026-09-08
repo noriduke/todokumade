@@ -276,14 +276,15 @@ a { color: var(--lamp); text-decoration: none; }
 }
 .hero-link:hover { border-color: var(--navy); }
 .ttl-br { display: none; }
-/* 縦長画面（スマホ・縦タブレット）: 横長写真を縦にトリミングすると顔が画面いっぱいになるので、
-   文字塊を下に寄せ、クリームのフェードを少し上から始めて顎〜襟の上に文字を載せる */
-@media (max-width: 899px) {
-  .hero { padding-bottom: 44px; }
+/* 縦長画面（スマホ・縦タブレット）: 横長写真を縦にトリミングすると顔が画面いっぱいになる。
+   写真は画面上部 76svh に収め、下端をクリームへ完全に溶かして、文字塊は顔の下（写真の外＋フェード部）に置く */
+@media (max-width: 899px) and (orientation: portrait) {
+  .hero { padding-bottom: 40px; }
+  .hero-bg { inset: 0 0 auto 0; height: 76vh; height: 76svh; }
   .hero-bg::after {
     background:
       radial-gradient(ellipse 90% 55% at 50% 8%, rgba(242,217,184,0.55) 0%, rgba(242,217,184,0) 60%),
-      linear-gradient(180deg, rgba(250,246,240,0.15) 0%, rgba(250,246,240,0) 30%, rgba(250,246,240,0.5) 66%, rgba(250,246,240,0.9) 86%, rgba(250,246,240,0.97) 100%);
+      linear-gradient(180deg, rgba(250,246,240,0.15) 0%, rgba(250,246,240,0) 40%, rgba(250,246,240,0.6) 74%, #faf6f0 100%);
   }
   .eyebrow { margin-bottom: 10px; }
   .hero .catch { margin-top: 20px; }
