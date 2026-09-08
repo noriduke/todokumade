@@ -225,7 +225,7 @@
 html, body { margin: 0; padding: 0; background: var(--night); }
 /* overflow-x は hidden でなく clip（hidden だと祖先がスクロールコンテナ化して position: sticky が死ぬ） */
 body { overflow-x: clip; font-family: var(--sans); color: var(--ink); }
-img, video { max-width: 100%; }
+img, video { max-width: 100%; height: auto; } /* width/height 属性の px 高さを打ち消す（各ブロックの img は個別に height を指定） */
 a { color: var(--lamp); text-decoration: none; }
 
 /* 背景は「継ぎ目の色が一致する各セクションのグラデ」で連続させる。
@@ -395,7 +395,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .chara-inner { max-width: 860px; margin: 0 auto; }
 .chara-cols { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 44px; }
 .chara-photo { flex: 1 1 300px; max-width: 420px; }
-.chara-photo img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 20px 50px rgba(93,69,88,0.35); }
+.chara-photo img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 20px 50px rgba(93,69,88,0.35); }
 .chara-text { flex: 1 1 300px; max-width: 420px; }
 .chara-text .eyebrow { letter-spacing: 0.34em; text-indent: 0; margin-bottom: 6px; }
 .chara-text h3 {
