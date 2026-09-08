@@ -278,10 +278,10 @@ a { color: var(--lamp); text-decoration: none; }
 .hero-link:hover { border-color: var(--navy); }
 .ttl-br { display: none; }
 /* 縦長画面（スマホ・縦タブレット）: 横長写真を縦にトリミングすると顔が画面いっぱいになる。
-   写真は画面上部 90svh に収め、下端をクリームへ完全に溶かして、文字塊は顔の下（写真の外＋フェード部）に置く */
+   写真は画面上部 87svh に収め、下端をクリームへ完全に溶かして、文字塊は顔の下（写真の外＋フェード部）に置く */
 @media (max-width: 899px) and (orientation: portrait) {
-  .hero { padding-bottom: 40px; }
-  .hero-bg { inset: 0 0 auto 0; height: 90vh; height: 90svh; }
+  .hero { padding-bottom: 34px; }
+  .hero-bg { inset: 0 0 auto 0; height: 87vh; height: 87svh; }
   .hero-bg::after {
     background:
       radial-gradient(ellipse 90% 55% at 50% 8%, rgba(242,217,184,0.55) 0%, rgba(242,217,184,0) 60%),
@@ -289,7 +289,7 @@ a { color: var(--lamp); text-decoration: none; }
   }
   .eyebrow { margin-bottom: 10px; }
   .hero .catch { margin-top: 20px; }
-  .hero-link { margin-top: 22px; }
+  .hero-link { margin-top: 18px; }
 }
 /* 読み込み時だけ静かに立ち上げる（スクロール依存にしない） */
 @keyframes heroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
