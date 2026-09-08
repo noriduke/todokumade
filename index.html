@@ -7,7 +7,6 @@
 <meta name="description" content="糊月の小説『わたしに届くまで』。五人組アイドルの亜咲海が、歌や涙に寄せられる期待のなかで「本当の自分」を見失っていく。全8話・約2万字・完結、小説家になろうで全文無料。あらすじ・登場人物・MVを紹介。">
 <meta name="author" content="糊月">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<meta name="theme-color" content="#161932">
 <link rel="canonical" href="https://noriduke.github.io/todokumade/">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 <meta property="og:type" content="website">
@@ -222,7 +221,9 @@
   --sans: 'Zen Kaku Gothic New', sans-serif;
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: var(--night); }
+html, body { margin: 0; padding: 0; }
+/* ルートの地色は上半分を暖白・下半分を夜紺に。iOS の引っ張り（オーバースクロール）で上はヒーローの色、下はフッターの色が出る */
+html { background: linear-gradient(180deg, #faf6f0 0%, #faf6f0 50%, var(--night) 50%, var(--night) 100%); }
 /* overflow-x は hidden でなく clip（hidden だと祖先がスクロールコンテナ化して position: sticky が死ぬ） */
 body { overflow-x: clip; font-family: var(--sans); color: var(--ink); }
 img, video { max-width: 100%; height: auto; } /* width/height 属性の px 高さを打ち消す（各ブロックの img は個別に height を指定） */
@@ -266,7 +267,7 @@ a { color: var(--lamp); text-decoration: none; }
   position: relative; /* 背景画像より上に描画するため必須 */
   margin: 28px 0 0; font-family: var(--serif); text-align: center;
   font-size: clamp(14px, 3.6vw, 17px); line-height: 2.2; letter-spacing: 0.12em;
-  text-wrap: pretty;
+  /* text-wrap: pretty は使わない。Safari が <br> より前で折り返して4行になる（iPhone実機で確認） */
 }
 /* 本編への入口。ボタンではなく、明朝・字間・細罫の一行にとどめる */
 .hero-link {
@@ -491,7 +492,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .novel .sec-sub { margin-bottom: 48px; opacity: 0.7; }
 .novel .q {
   margin: 0 0 56px; font-family: var(--serif);
-  font-size: clamp(15px, 3.8vw, 18px); line-height: 2.4; letter-spacing: 0.12em; text-wrap: pretty;
+  font-size: clamp(15px, 3.8vw, 18px); line-height: 2.4; letter-spacing: 0.12em;
 }
 .cta {
   display: inline-block; padding: 16px 56px; border: 1px solid var(--lamp);
@@ -504,7 +505,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
 .work-info { margin: 120px auto 0; max-width: 540px; text-align: left; font-size: 12.5px; line-height: 1.95; letter-spacing: 0.04em; color: var(--moon); }
 .work-info::before { content: ""; display: block; width: 1px; height: 56px; margin: 0 auto 44px; background: linear-gradient(180deg, rgba(232,185,106,0), rgba(232,185,106,0.55)); }
 .work-info-title { margin: 0 0 22px; font-family: var(--serif); font-weight: 500; font-size: 12px; letter-spacing: 0.34em; text-indent: 0.34em; text-align: center; color: var(--lamp); }
-.work-info-lead { margin: 0 0 26px; opacity: 0.78; text-wrap: pretty; }
+.work-info-lead { margin: 0 0 26px; opacity: 0.78; }
 .work-info-list { margin: 0; }
 .work-info-list > div { display: flex; gap: 16px; padding: 9px 0; border-top: 1px solid rgba(233,230,223,0.12); opacity: 0.82; }
 .work-info-list > div:last-child { border-bottom: 1px solid rgba(233,230,223,0.12); }
