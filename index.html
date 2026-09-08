@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="歌が誰かに届いた、その一秒だけ、わたしはここにいていい気がする。——アイドル・亜咲海と、糊月の小説『わたしに届くまで』">
 <meta name="twitter:image:alt" content="逆光の中でこちらを見つめる亜咲海と、タイトル『わたしに届くまで』">
 <meta name="twitter:image" content="https://noriduke.github.io/todokumade/assets/ogp.jpg">
-<link rel="preload" as="image" href="assets/hero-1448.webp" imagesrcset="assets/hero-800.webp 800w, assets/hero-1448.webp 1448w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-1448.webp" imagesrcset="assets/hero-800.webp 800w, assets/hero-1448.webp 1448w" imagesizes="(min-width: 1000px) 58vw, 100vw" fetchpriority="high">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -242,58 +242,46 @@ a { color: var(--lamp); text-decoration: none; }
 }
 
 /* ---------- HERO ---------- */
-.hero {
-  position: relative; min-height: 100vh; min-height: 100svh; background: #faf6f0;
-  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-  padding: 0 24px 64px;
-}
-.hero-bg { position: absolute; inset: 0; overflow: hidden; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+/* 写真と文章を別のグリッド領域に置き、画面比率や文字量に依存する重なりを防ぐ。 */
+.hero { display: grid; background: #faf6f0; }
+.hero-bg { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero-bg::after {
-  content: ""; position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 90% 55% at 50% 8%, rgba(242,217,184,0.55) 0%, rgba(242,217,184,0) 60%),
-    linear-gradient(180deg, rgba(250,246,240,0.15) 0%, rgba(250,246,240,0) 35%, rgba(250,246,240,0.55) 78%, rgba(250,246,240,0.96) 100%);
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 75%, rgba(250,246,240,.7) 100%);
 }
-.hero-inner { position: relative; text-align: center; max-width: 640px; }
+.hero-copy { padding: 36px 24px 48px; text-align: center; }
+.hero-inner { max-width: 640px; margin: 0 auto; }
 .eyebrow { margin: 0 0 14px; font-size: 12px; letter-spacing: 0.42em; text-indent: 0.42em; color: var(--navy); font-weight: 500; }
 .hero h1 {
   margin: 0; font-family: var(--serif); font-weight: 500;
-  font-size: clamp(34px, 9vw, 72px); letter-spacing: 0.14em; line-height: 1.35;
+  font-size: clamp(32px, 6vw, 56px); letter-spacing: 0.1em; line-height: 1.4;
   color: var(--ink); text-wrap: balance;
 }
+.ttl-br { display: none; }
 .hero .catch {
-  position: relative; /* 背景画像より上に描画するため必須 */
   margin: 28px 0 0; font-family: var(--serif); text-align: center;
-  font-size: clamp(14px, 3.6vw, 17px); line-height: 2.2; letter-spacing: 0.12em;
+  font-size: clamp(13px, 3.4vw, 16px); line-height: 2.2; letter-spacing: 0.08em;
   text-wrap: pretty;
 }
-.ttl-br { display: none; }
-@media (min-width: 900px) {
-  /* 文字は窓幅に比例させる（1280px窓での見え方＝モックアップが基準比率） */
-  .hero { align-items: flex-start; }
-  .hero-bg img { object-position: center 22%; }
-  .hero-inner { text-align: left; margin-left: 5vw; max-width: 44vw; }
-  .hero-inner .eyebrow { text-indent: 0; font-size: clamp(11px, 0.94vw, 19px); }
-  .hero h1 { font-size: clamp(40px, 5.2vw, 108px); }
-  .ttl-br { display: inline; }
-  .hero .catch {
-    position: absolute; right: 5.5vw; top: 19vh; margin: 0;
-    writing-mode: vertical-rl; text-align: start;
-    font-size: clamp(14px, 1.48vw, 30px); line-height: 1.7; letter-spacing: 0.12em;
-    text-shadow: 0 0 1.5em rgba(250,246,240,0.8);
-  }
-}
-
-/* 読者が冒頭から本編へ進める案内 */
-.hero-summary { margin: 16px 0 0; font-size: clamp(12px, 1.1vw, 16px); line-height: 1.8; color: var(--navy); }
+.hero-summary { margin: 16px 0 0; font-size: 12px; line-height: 1.8; color: var(--navy); }
 .hero-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 20px; margin-top: 20px; font-size: 13px; }
 .hero-nav a { color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
-.hero-nav .hero-read { padding: 12px 18px; border: 1px solid var(--navy); text-decoration: none; background: rgba(250,246,240,.8); }
+.hero-nav .hero-read { padding: 12px 18px; border: 1px solid var(--navy); text-decoration: none; }
 .hero-nav .hero-read:hover { color: #faf6f0; background: var(--navy); }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
-@media (min-width: 900px) { .hero-nav { justify-content: flex-start; } }
-@media (max-width: 599px) { .hero { padding-bottom: 36px; } }
+@media (min-width: 1000px) {
+  .hero { grid-template-columns: minmax(0, 42fr) minmax(0, 58fr); min-height: min(900px, 100svh); }
+  .hero-bg { grid-column: 2; grid-row: 1; aspect-ratio: auto; min-height: 600px; }
+  .hero-bg img { position: absolute; inset: 0; }
+  .hero-bg::after { background: linear-gradient(90deg, rgba(250,246,240,.65), transparent 18%); }
+  .hero-copy { grid-column: 1; grid-row: 1; align-self: center; padding: 64px clamp(24px, 4vw, 72px); text-align: left; }
+  .hero h1 { font-size: clamp(40px, 4.6vw, 80px); }
+  .ttl-br { display: inline; }
+  .hero .eyebrow { letter-spacing: .24em; text-indent: 0; }
+  .hero .catch { text-align: left; font-size: 14px; letter-spacing: .04em; }
+  .hero-nav { justify-content: flex-start; }
+}
 
 /* ---------- section common ---------- */
 .sec-head { margin: 0; font-weight: 400; font-size: 1em; }
@@ -530,8 +518,9 @@ footer .credit { margin-bottom: 8px; letter-spacing: 0.08em; opacity: 0.38; }
   <!-- 1. HERO -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="assets/hero-1448.webp" srcset="assets/hero-800.webp 800w, assets/hero-1448.webp 1448w" sizes="100vw" alt="逆光の中でこちらを見つめる亜咲海のクローズアップ" fetchpriority="high" width="1448" height="1086">
+      <img src="assets/hero-1448.webp" srcset="assets/hero-800.webp 800w, assets/hero-1448.webp 1448w" sizes="(min-width: 1000px) 58vw, 100vw" alt="逆光の中でこちらを見つめる亜咲海のクローズアップ" fetchpriority="high" width="1448" height="1086">
     </div>
+    <div class="hero-copy">
     <div class="hero-inner">
       <p class="eyebrow">糊月の小説 ／ 全8話・完結</p>
       <h1>わたしに<br class="ttl-br">届くまで</h1>
@@ -542,6 +531,7 @@ footer .credit { margin-bottom: 8px; letter-spacing: 0.08em; opacity: 0.38; }
       </nav>
     </div>
     <p class="catch">歌が誰かに届いた、その一秒だけ、<br>わたしはここにいていい気がする。</p>
+    </div>
   </section>
 
   <!-- 2. MUSIC VIDEO -->
